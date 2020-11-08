@@ -12,11 +12,11 @@ We use Eclipse but you can use any Maven and WebLogic capable IDE. We use Postgr
 * You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free).
 
 ## Start Managed PostgreSQL on Azure
-We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up. 
+We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up.
 
 * Go to the [Azure portal](http://portal.azure.com).
-* The steps in this section use `<your suffix>`.  The suffix could be your first name such as "reza".  It should be short and reasonably unique.
-* Select Create a resource -> Databases -> Azure Database for PostgreSQL.  In "How do you plan to use the service?" select "single server".
+* The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique.
+* Select 'Create a resource'. In the search box, enter and select 'Azure Database for PostgreSQL'. Hit create. Select a single server.
 * In "Resource group" select "Create new" and enter weblogic-cafe-db-group-`<your suffix>`
 * Specify the Server name to be weblogic-cafe-db-`<your suffix>`.
 * Specify the location to be a location close to you.
