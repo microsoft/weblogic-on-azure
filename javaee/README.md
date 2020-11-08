@@ -43,7 +43,7 @@ The next step is to get the application up and running. Follow the steps below t
 * After the Eclipse WebLogic adapters are done installing, go to the 'Servers' panel again, secondary click. 
    * Select New -> Server -> Oracle -> Oracle WebLogic Server. 
    * Choose the defaults and hit 'Next'. 
-   * Enter where you have WebLogic installed.  Even though the dialog says "WebLogic home" you may have to enter the full path to the `wlserver` directory within the `Oracle_Home` directory.
+   * Enter where you have WebLogic installed.  Even though the dialog says "WebLogic home" you may have to enter the full path to the `wlserver` directory.
    * Enter where the Oracle JDK is installed.  Click next. 
    * For the domain directory, hit Create -> Create Domain. 
    * For the domain name, specify 'domain1'. Hit 'Finish' to add the new server to Eclipse.  If Eclipse asks to create a master password hint, do so.  Consider using `<your suffix>` for the questions and answers.
