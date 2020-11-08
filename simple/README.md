@@ -1,10 +1,10 @@
-# Deploying a Java EE Application on Azure Using a Single WebLogic Virtual Machine Instance
-This demo shows how you can deploy a Java EE application to Azure using a simple instance of WebLogic Server deployed from the Azure Marketplace.
+# Deploying a Java Application on Azure Using a Single WebLogic Virtual Machine Instance
+This demo shows how you can deploy a Java application to Azure using a simple instance of WebLogic Server.
 
 ## Setup
 
-* Install the latest version of Oracle JDK 8 (we used [8u241](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)).
-* Install the Eclipse IDE for Enterprise Java Developers from [here](https://www.eclipse.org/downloads/packages/).
+* Install the latest version of Oracle JDK 8 (we used [8u271](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)).
+* Install [the 2020-06 release of Eclipse for Enterprise Java Developers](https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-enterprise-java-developers) (this is the latest Eclipse IDE version that supports Java SE 8).
 * Install WebLogic 12.2.1.3 (note - not the latest version) using the Quick Installer by downloading it from [here](https://www.oracle.com/middleware/technologies/weblogic-server-downloads.html). You need this locally even if you are not running WebLogic locally because the Eclipse WebLogic deployment support needs it.
 * Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
 * You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free).
@@ -14,7 +14,7 @@ This demo shows how you can deploy a Java EE application to Azure using a simple
 We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up. 
 
 * Go to the [Azure portal](http://portal.azure.com).
-* Select Create a resource -> Databases -> Azure Database for PostgreSQL.  In "How do you plan to use the service?" select "single server".
+* Select 'Create a resource'. In the search box, enter and select 'Azure Database for PostgreSQL'. Hit create. Select a single server.
 * The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique, and less than 10 charracters in length.
 * Create and specify a new resource group named weblogic-cafe-db-group-`<your suffix>` . 
 * Specify the Server name to be weblogic-cafe-db-`<your suffix>`.
