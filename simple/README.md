@@ -37,9 +37,8 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
 ## Create the WebLogic Instance on Azure
 The next step is to get a WebLogic instance up and running. Follow the steps below to do so.
 
-* **preview** Go to the [preview link in the Azure portal](https://portal.azure.com/#create/microsoft_javaeeonazure_test.20200429-edburns-04-preview20200429-edburns-04).
-* Click 'Create'. 
-* **preview** Ensure "Oracle Enterprise Java" is selected in "Subscription".
+* Go to the [Azure portal](http://portal.azure.com).
+* Select 'Create a resource'. In the search box, enter and select 'Oracle WebLogic Server With Admin Server'. Hit create.
 * In the basics blade, for "Project details"
    * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . 
    * Select Region '(US) East US'. 
