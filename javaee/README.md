@@ -66,7 +66,7 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
 
 * Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Unless you changed them, the userid is `weblogic` and the password is `welcome1`.  
    * Click on Services -> Data Sources. Select New -> Generic Data Source. 
-   * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
+   * Enter the name as 'WebLogicDB', JNDI name as 'jdbc/WebLogicDB' and select the database type to be PostgreSQL. Click next. 
    * Accept the defaults and click next.  Do not click Finish, even though you could do so.
    * On the next screen select 'Logging Last Resource' and click next. 
    * Enter the database name to be 'postgres'. 
@@ -77,9 +77,9 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
    * On the next screen, accept the defaults and click next.
    * On the "Select Targets" screen, select AdminServer and click Finish.
    * Test the connection.   
-      * In the "Data Sources" pane, click "WebLogicCafeDB".
+      * In the "Data Sources" pane, click "WebLogicDB".
       * Click Monitoring -> Testing
-      * Select AdminServer and click "Test Data Source".  You must see "Test of WebLogicCafeDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
+      * Select AdminServer and click "Test Data Source".  You must see "Test of WebLogicDB on server AdminServer was successful." at the top of this pane after clicking the button.  If you do not, put this workshop aside, troubleshoot and resolve the issue.  Once the connection successfully tests, you may continue.
 
 ## Open weblogic-cafe in the IDE
 * Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.  Click Next

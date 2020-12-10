@@ -50,7 +50,7 @@ The next step is to get a WebLogic instance up and running. Follow the steps bel
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`.
    * For "Choose database type", from the dropdown menu, select the option for "Azure Database for PostgreSQL".
-   * Specify JNDI Name to be 'jdbc/WebLogicCafeDB'. 
+   * Specify JNDI Name to be 'jdbc/WebLogicDB'. 
    * Specify DataSource Connection String to be 'jdbc:postgresql://weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com:5432/postgres?&sslmode=require'
    * Specify the Database Username to be 'postgres@weblogic-cafe-db-`<your suffix>`'
    * Enter the Database Password as 'Secret123!'.  Make sure to get the exclamation point. 
@@ -68,9 +68,9 @@ The next step is to get a WebLogic instance up and running. Follow the steps bel
 
 * After logging in to the WebLogic Server Administration Console, in the "Domain Structure" pane, expand "Services".
 * Click on "Data Sources".
-* In the middle of the page, you should see a link with text "jdbc/WebLogicCafeDB".  Click the link.
+* In the middle of the page, you should see a link with text "jdbc/WebLogicDB".  Click the link.
 * In the upper tab bar, select "Monitoring", then, in the lower tab bar select "Testing".
-* Select the radio button next to the server, then click the "Test Data Source" button.  You must see the text "Test of jdbc/WebLogicCafeDB on server admin was successful." in the Messages section of the page after clicking the button.  If you do not see this, you must troubleshoot and resolve the reason why before continuing.
+* Select the radio button next to the server, then click the "Test Data Source" button.  You must see the text "Test of jdbc/WebLogicDB on server admin was successful." in the Messages section of the page after clicking the button.  If you do not see this, you must troubleshoot and resolve the reason why before continuing.
 
 ## Setting Up WebLogic in Eclipse
 The next step is to get the application up and running. 
