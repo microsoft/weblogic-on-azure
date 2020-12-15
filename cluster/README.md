@@ -37,30 +37,31 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
 ## Create the WebLogic Cluster on Azure
 The next step is to get a WebLogic cluster up and running. Follow the steps below to do so.
 
-* **preview** Go to the [preview link in the Azure portal](https://portal.azure.com/#create/microsoft_javaeeonazure_test.20200502-edburns-06-preview20200502-edburns-06).
-* Click 'Create'. 
-* **preview** Ensure "Oracle Enterprise Java" is selected in "Subscription".
+* Go to the [Azure portal](https://ms.portal.azure.com/).
+* Use the search bar on the top to navigate to the Marketplace.
+* In the Marketplace, type in 'Oracle WebLogic Server Cluster' in the search bar and click Enter.
+* Locate the offer named 'Oracle WebLogic Server Cluster' and click 'Create'. 
+* Ensure "Oracle Enterprise Java" is selected in "Subscription", or select your own subscription.
 * In the basics blade, for "Project details"
    * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . 
    * Select Region '(US) East US'. 
 * For "Credentails for Virtual Machines and WebLogic"
    * For the "Password for admin account of VMs", enter 'Secret123456'. 
-   * Enter your OTN/Oracle.com username and password (you can create an account for free). 
-      * **preview** use `60a78f02.microsoft.com@amer.teams.ms` and `hEc!ucesW3Th` for the credentials
    * For the "Password for WebLogic Administrator", enter 'Secret123456'.
 * For Number of VMs, change the value to 3.
 * For "Optional Basic Configuration", ensure  `Yes` is selected to accept default for optional configuration.
 * Click Next.
 * In the "Azure Application Gateway" use these values
+   * Config your own Azure KeyVault following this doc: [Tutorial: Migrate a WebLogic Server cluster to Azure with Azure Application Gateway as a load balancer](https://docs.microsoft.com/en-us/azure/developer/java/migration/migrate-weblogic-with-app-gateway#create-an-azure-key-vault) 
    * Toggle "Connect to Azure Application Gateway" to `Yes`.
-   * **preview** Specify "Resource group name in current subscription containing the KeyVault" to be ejb042801k.
-   * **preview** Specify "Name of the Azure KeyVault containing secrets for the Certificate for SSL Termination" to be ejb042801k.
+   * Specify "Resource group name in current subscription containing the KeyVault" to be the resource group you used to create the KeyVault.
+   * Specify "Name of the Azure KeyVault containing secrets for the Certificate for SSL Termination" to be the name of the Azure KeyVault you created.
    * Specify "The name of the secret in the specified KeyVault whose value is the SSL Certificate Data" to be myCertSecretData.
    * Specify "The name of the secret in the specified KeyVault whose value is the password for the SSL Certificate" to be myCertSecretPassword. 
 * Click Next.
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`. 
-   * For "Choose database type", from the dropdown menu, select the option for PostgreSQL.
+   * For "Choose database type", from the dropdown menu, select the option for "Azure Database for PostgreSQL".
    * Specify JNDI Name to be 'jdbc/WebLogicCafeDB'. 
    * Specify DataSource Connection String to be 'jdbc:postgresql://weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com:5432/postgres'
    * Specify the Database Username to be 'postgres@weblogic-cafe-db-`<your suffix>`'
@@ -71,8 +72,8 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the final screen, click Create.
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
-* **preview** You must modify the security rules to open port 7001.  Locate your resource group weblogic-cafe-group-`<your suffix>` and, within the group, select `wls-nsg`.
-* **preview** Within the Network Security Group, select "NRMS-Rule-105".  In the blade that appears, delete `7001` from the list of "Destination port ranges" and hit Save.  Wait for the rule to update.  View the list of resources in your resource group.
+* You must modify the security rules to open port 7001.  Locate your resource group weblogic-cafe-group-`<your suffix>` and, within the group, select `wls-nsg`.
+* Within the Network Security Group, select "NRMS-Rule-105".  In the blade that appears, delete `7001` from the list of "Destination port ranges" and hit Save.  Wait for the rule to update.  View the list of resources in your resource group.
 * Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
 
 ## Setting Up WebLogic in Eclipse

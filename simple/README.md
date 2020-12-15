@@ -44,14 +44,12 @@ The next step is to get a WebLogic instance up and running. Follow the steps bel
    * Select Region '(US) East US'. 
 * For "Credentails for Virtual Machines and WebLogic"
    * For the "Password for admin account of VMs", enter 'Secret123456'. 
-   * Enter your OTN/Oracle.com username and password (you can create an account for free).
-      * **preview** use `60a78f02.microsoft.com@amer.teams.ms` and `hEc!ucesW3Th` for the credentials.
    * For the "Password for WebLogic Administrator", enter 'Secret123456'.
 * For "Optional Basic Configuration", ensure  `Yes` is selected to accept default for optional configuration.
 * Click Next.
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`.
-   * For "Choose database type", from the dropdown menu, select the option for PostgreSQL.
+   * For "Choose database type", from the dropdown menu, select the option for "Azure Database for PostgreSQL".
    * Specify JNDI Name to be 'jdbc/WebLogicCafeDB'. 
    * Specify DataSource Connection String to be 'jdbc:postgresql://weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com:5432/postgres?&sslmode=require'
    * Specify the Database Username to be 'postgres@weblogic-cafe-db-`<your suffix>`'
@@ -62,8 +60,8 @@ The next step is to get a WebLogic instance up and running. Follow the steps bel
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the final screen, click Create.
 * It will take some time for the WebLogic configuration to properly deploy (could be up to 15 minutes). Once the deployment completes, in the portal go to 'All resources'.
-* **preview** You must modify the security rules to open port 7001.  Locate your resource group weblogic-cafe-group-`<your suffix>` and, within the group, select `wls-nsg`.
-* **preview** Within the Network Security Group, select "NRMS-Rule-105".  In the blade that appears, delete `7001` from the list of "Destination port ranges" and hit Save.  Wait for the rule to update.  View the list of resources in your resource group.
+* You must modify the security rules to open port 7001.  Locate your resource group weblogic-cafe-group-`<your suffix>` and, within the group, select `wls-nsg`. 
+* Within the Network Security Group, select "NRMS-Rule-105".  In the blade that appears, delete `7001` from the list of "Destination port ranges" and hit Save.  Wait for the rule to update.  View the list of resources in your resource group.
 * Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
 
 ## Verify the database connection is successful
