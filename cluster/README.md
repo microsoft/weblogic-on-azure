@@ -70,7 +70,7 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * In "Azure Active Directory", leave "Connect to Active Directory" with `No` selected.
 * Click Next.
 * In "Elasticsearch and Kibana" use these values, please note to enable these feature, your selected Virtual Machines must have at lease 2.5GB memory [Learn more](https://azure.microsoft.com/en-us/overview/linux-on-azure/elastic/).
-   * <span style="color: red;">Step to create a Elasticsearch account?</span>
+   * Follow this [documentation(`preview`)](https://review.docs.microsoft.com/en-us/azure/developer/java/migration/migrate-weblogic-with-elk?branch=pr-en-us-1094#create-an-index-in-kibana-that-enables-searching-the-weblogic-server-logs) to create a Elasticsearch account
    * Toggle "Export logs to Elasticsearch" to `Yes`.
    * Specify "Elasticsearch endpoint URL" to be some URL like 'https://example.location.azure.elastic-cloud.com:9243'.
    * Specify "Elasticsearch User Name" to be the user name you Elasticsearch account user name.
