@@ -52,12 +52,10 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * For "Optional Basic Configuration", ensure  `Yes` is selected to accept default for optional configuration.
 * Click Next.
 * In the "Azure Application Gateway" use these values
-   * Config your own Azure KeyVault following this doc: [Tutorial: Migrate a WebLogic Server cluster to Azure with Azure Application Gateway as a load balancer](https://docs.microsoft.com/en-us/azure/developer/java/migration/migrate-weblogic-with-app-gateway#create-an-azure-key-vault) 
    * Toggle "Connect to Azure Application Gateway" to `Yes`.
-   * Specify "Resource group name in current subscription containing the KeyVault" to be the resource group you used to create the KeyVault.
-   * Specify "Name of the Azure KeyVault containing secrets for the Certificate for SSL Termination" to be the name of the Azure KeyVault you created.
-   * Specify "The name of the secret in the specified KeyVault whose value is the SSL Certificate Data" to be myCertSecretData.
-   * Specify "The name of the secret in the specified KeyVault whose value is the password for the SSL Certificate" to be myCertSecretPassword. 
+   * Choose "Generate a self-signed certificate" for the "Select desired TLS/SSL certificate option".
+   * To auto-generate a self-signed certificate, you will need to add user-assigned managed identities(at least one), click "Add".
+   * In the window pops from right, choose your subscription and user-assigned managed identities, then click "Add"
 * Click Next.
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`. 
