@@ -9,12 +9,14 @@ The scenarios demonstrated include:
 
 * Deploying a Java application on Azure using a simple instance of WebLogic. The [simple](/simple) folder shows how this is done.
 * Deploying a Java application on Azure into a load-balanced WebLogic cluster. The [cluster](/cluster) folder shows how this is done.
+* Deploying a Java application on Azure into a load-balanced WebLogic cluster with Coherence. The [coherence](/coherence) folder shows how this is done.
 
 We recommend exploring the scenarios in the following order, but the text is written with sufficient redundancy so that you can do them in any order.
 
 * [javaee](/javaee)
 * [simple](/simple)
 * [cluster](/cluster)
+* [coherence](/coherence)
 
 The demos use Java EE 7, Maven, Eclipse and PostgreSQL.
 
