@@ -55,44 +55,52 @@ public class Cafe implements Serializable {
 	}
 
 	public List<Coffee> getCoffeeList() {
+		this.getAllCoffees();
 		return coffeeList;
 	}
 
 	@PostConstruct
 	private void init() {
+		this.getAllCoffees();
+	}
+
+	private Client getClient() {
+		if(this.client != null) {
+			return client;
+		}
 		try {
 			InetAddress inetAddress = InetAddress.getByName(
 					((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest())
 							.getServerName());
-
+	
 			baseUri = FacesContext.getCurrentInstance().getExternalContext().getRequestScheme() + "://"
 					+ inetAddress.getHostName() + ":"
 					+ FacesContext.getCurrentInstance().getExternalContext().getRequestServerPort()
 					+ "/weblogic-cafe/rest/coffees";
-			this.client = ClientBuilder.newClient();
-			this.getAllCoffees();
+			client = ClientBuilder.newClient();
 		} catch (IllegalArgumentException | NullPointerException | WebApplicationException | UnknownHostException ex) {
 			logger.severe("Processing of HTTP response failed.");
 			ex.printStackTrace();
 		}
+		return client;
 	}
 
 	private void getAllCoffees() {
-		this.coffeeList = this.client.target(this.baseUri).path("/").request(MediaType.APPLICATION_XML)
+		this.coffeeList = getClient().target(this.baseUri).path("/").request(MediaType.APPLICATION_XML)
 				.get(new GenericType<List<Coffee>>() {
 				});
 	}
 
 	public void addCoffee() {
 		Coffee coffee = new Coffee(this.name, this.price);
-		this.client.target(baseUri).request(MediaType.APPLICATION_XML).post(Entity.xml(coffee));
+		getClient().target(baseUri).request(MediaType.APPLICATION_XML).post(Entity.xml(coffee));
 		this.name = null;
 		this.price = null;
 		this.getAllCoffees();
 	}
 
 	public void removeCoffee(String coffeeId) {
-		this.client.target(baseUri).path(coffeeId).request().delete();
+		getClient().target(baseUri).path(coffeeId).request().delete();
 		this.getAllCoffees();
 	}
 }

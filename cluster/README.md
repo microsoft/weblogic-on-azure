@@ -34,6 +34,16 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. P
    * Toggle "Enforce SSL connection" to "DISABLED". 
    * Hit Save.
 
+## Create User-Assigned Managed Identity
+
+* Go to the [Azure portal](http://portal.azure.com).
+* Select Create a resource -> User Assigned Managed Identity.
+* The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique, and less than 10 charracters in length.
+* Create and specify a new resource group named weblogic-cafe-managed-identity-`<your suffix>`.
+* Specify the Instance name to be weblogic-cafe-managed-identity-`<your suffix>`. 
+* Specify the location to be a location close to you.
+* Click Review + create -> Create
+
 ## Create the WebLogic Cluster on Azure
 The next step is to get a WebLogic cluster up and running. Follow the steps below to do so.
 
@@ -49,12 +59,15 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * For the "Password for WebLogic Administrator", enter 'Secret123456'.
 * For Number of VMs, change the value to 3.
 * For "Optional Basic Configuration", ensure  `Yes` is selected to accept default for optional configuration.
-* Click Next until you reach the "Azure Application Gateway" blade.
+* Click Next.
+* In "TLS/SSL Configuration", leave "Configure WebLogic Administration Console on HTTPS (Secure) port, with your own TLS/SSL Certificate?" with `No` selected.
 * In the "Azure Application Gateway" use these values
    * Toggle "Connect to Azure Application Gateway" to `Yes`.
    * Choose "Generate a self-signed certificate" for the "Select desired TLS/SSL certificate option".
    * To auto-generate a self-signed certificate, you will need to add user-assigned managed identities (at least one), click "Add".
-   * In the window pops from right, choose your subscription and user-assigned managed identities, then click "Add"
+   * In the window pops from right, choose weblogic-cafe-managed-identity-`<your suffix>`, then click "Add"
+* Click Next.
+* In "DNS Configuration", leave "Configure Custom DNS Alias?" with `No` selected.
 * Click Next.
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`. 
@@ -66,19 +79,13 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * Click Next.
 * In "Azure Active Directory", leave "Connect to Active Directory" with `No` selected.
 * Click Next.
-* In "Elasticsearch and Kibana" use these values, please note to enable these feature, your selected Virtual Machines must have at lease 2.5GB memory [Learn more](https://azure.microsoft.com/en-us/overview/linux-on-azure/elastic/).
-   * Follow this [documentation(`preview`)](https://review.docs.microsoft.com/en-us/azure/developer/java/migration/migrate-weblogic-with-elk?branch=pr-en-us-1094#create-an-index-in-kibana-that-enables-searching-the-weblogic-server-logs) to create a Elasticsearch account
-   * Toggle "Export logs to Elasticsearch" to `Yes`.
-   * Specify "Elasticsearch endpoint URL" to be some URL like 'https://example.location.azure.elastic-cloud.com:9243'.
-   * Specify "Elasticsearch User Name" to be the user name you Elasticsearch account user name.
-   * Specify "Password for Elasticsearch account" to be the user name you Elasticsearch account password.
-   * For "WebLogic Server logs to export", select at lease one log to export to Elasticsearch.
+* In "Elasticsearch and Kibana", leave "Export logs to Elasticsearch?" with `No` selected.
+* Click Next.
+* In "Coherence", leave "Use Coherence cache?" with `No` selected.
 * Click Next:Review + create
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the final screen, click Create.
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
-* You must modify the security rules to open port 7001.  Locate your resource group weblogic-cafe-group-`<your suffix>` and, within the group, select `wls-nsg`.
-* Within the Network Security Group, select "NRMS-Rule-105".  In the blade that appears, delete `7001` from the list of "Destination port ranges" and hit Save.  Wait for the rule to update.  View the list of resources in your resource group.
 * Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
 
 

@@ -15,6 +15,7 @@ We recommend exploring the scenarios in the following order, but the text is wri
 * [javaee](/javaee)
 * [simple](/simple)
 * [cluster](/cluster)
+* [cluster with coherence](/clusterwithcoherence)
 
 The demos use Java EE 7, Maven, Eclipse and PostgreSQL.
 
