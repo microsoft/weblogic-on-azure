@@ -1,9 +1,7 @@
 # Weblogic on Azure
 This repository shows how to deploy a Java application to Azure using WebLogic and virtual machines. The repository hosts the demos for this [talk](abstract.md) or materials for [this](lab-abstract.md) lab. The prerequistes for the lab are [here](prerequisites.md).
 
-The content focuses on the [WebLogic on Azure Virtual Machines solutions](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-weblogic) jointly developed and supported by Oracle and Microsoft.
-
-For greater details on the solutions to run WebLogic on Azure virtual machines, please look [here](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-weblogic).
+For greater details on the solutions to run WebLogic on Azure virtual machines, please look [here](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/oracle/oracle-weblogic). There is also a slide deck on the solutions available [here](https://aka.ms/weblogic-on-azure-deck).
 
 The basic Java EE application used throughout is in the [javaee](/javaee) folder. You should set up and explore this application on your local machine.
 
