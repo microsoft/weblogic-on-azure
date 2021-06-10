@@ -27,7 +27,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
    * Click 'OK'
 * Specify the Admin username to be postgres. 
 * Specify the Password to be Secret123! (do not forget the exclamation point). 
-* Hit 'Review+create' then 'Create'. It will take a moment for the database to deploy and be ready for use.
+* Hit 'Review+create', then 'Create'. It will take a moment for the database to deploy and be ready for use.
 * In the portal, go to 'All resources'. Enter `<your suffix>` into the filter box and press enter.
 * Find and click on weblogic-cafe-db-`<your suffix>`. 
 * Under Settings, open the connection security panel.
