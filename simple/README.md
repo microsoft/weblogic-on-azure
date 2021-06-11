@@ -51,7 +51,7 @@ The next step is to get a WebLogic instance up and running. Follow the steps bel
    * Toggle "Connect to DataBase" to `Yes`.
    * For "Choose database type", from the dropdown menu, select the option for "Azure Database for PostgreSQL".
    * Specify JNDI Name to be 'jdbc/WebLogicCafeDB'. 
-   * Specify DataSource Connection String to be 'jdbc:postgresql://weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com:5432/postgres?&sslmode=require'
+   * Specify DataSource Connection String to be 'jdbc:postgresql://weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com:5432/postgres?sslmode=require'
    * Specify the Database Username to be 'postgres@weblogic-cafe-db-`<your suffix>`'
    * Enter the Database Password as 'Secret123!'.  Make sure to get the exclamation point. 
 * Click Next.
