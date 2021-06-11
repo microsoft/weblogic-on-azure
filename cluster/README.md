@@ -11,7 +11,7 @@ This demo shows how you can deploy a Java EE application to Azure into a WebLogi
 
 ## Start Managed PostgreSQL on Azure
 
-We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up. 
+We will be using the fully managed PostgreSQL offering in Azure for this demo. Please set it up now unless you have done so already. Below is how we set it up. 
 
 * Go to the [Azure portal](http://portal.azure.com).
 * Select Create a resource -> Databases -> Azure Database for PostgreSQL.  In "How do you plan to use the service?" select "single server".
