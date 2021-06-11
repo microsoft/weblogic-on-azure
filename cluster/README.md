@@ -49,7 +49,7 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * For the "Password for WebLogic Administrator", enter 'Secret123456'.
 * For Number of VMs, change the value to 3.
 * For "Optional Basic Configuration", ensure  `Yes` is selected to accept default for optional configuration.
-* Click Next.
+* Click Next until you reach the "Azure Application Gateway" blade.
 * In the "Azure Application Gateway" use these values
    * Toggle "Connect to Azure Application Gateway" to `Yes`.
    * Choose "Generate a self-signed certificate" for the "Select desired TLS/SSL certificate option".
