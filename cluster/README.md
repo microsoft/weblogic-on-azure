@@ -15,7 +15,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. P
 
 * Go to the [Azure portal](http://portal.azure.com).
 * Select 'Create a resource'. In the search box, enter and select 'Azure Database for PostgreSQL'. Hit create. Select a single server.
-* The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique, and less than 10 charracters in length.
+* The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique, and less than 10 characters in length.
 * Create and specify a new resource group named weblogic-cafe-db-group-`<your suffix>` . 
 * Specify the Server name to be weblogic-cafe-db-`<your suffix>`.
 * Specify the location to be a location close to you.
