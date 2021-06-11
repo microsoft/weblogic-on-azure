@@ -46,7 +46,7 @@ The next step is to get a WebLogic instance up and running. Follow the steps bel
    * For the "Password for admin account of VMs", enter 'Secret123456'. 
    * For the "Password for WebLogic Administrator", enter 'Secret123456'.
 * For "Optional Basic Configuration", ensure  `Yes` is selected to accept default for optional configuration.
-* Click Next.
+* Click Next until you reach the Database blade.
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`.
    * For "Choose database type", from the dropdown menu, select the option for "Azure Database for PostgreSQL".
