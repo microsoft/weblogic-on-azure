@@ -1,5 +1,5 @@
 # Deploying a Java EE Application on Azure Using a WebLogic Virtual Machine Cluster
-This demo shows how you can deploy a Java EE application to Azure into a WebLogic cluster using a marketplace solution.
+This demo shows how you can deploy a Java EE application to Azure into a WebLogic cluster.
 
 ## Setup
 
