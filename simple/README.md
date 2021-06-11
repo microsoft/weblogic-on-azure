@@ -54,9 +54,7 @@ The next step is to get a WebLogic instance up and running. Follow the steps bel
    * Specify DataSource Connection String to be 'jdbc:postgresql://weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com:5432/postgres?sslmode=require'
    * Specify the Database Username to be 'postgres@weblogic-cafe-db-`<your suffix>`'
    * Enter the Database Password as 'Secret123!'.  Make sure to get the exclamation point. 
-* Click Next.
-* In "Azure Active Directory", leave "Connect to Active Directory" with `No` selected.
-* Click Next:Review + create
+* Click "Review + create".
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the final screen, click Create.
 * It will take some time for the WebLogic configuration to properly deploy (could be up to 15 minutes). Once the deployment completes, in the portal go to 'All resources'.
