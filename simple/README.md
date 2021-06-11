@@ -40,7 +40,8 @@ The next step is to get a WebLogic instance up and running. Follow the steps bel
 * Go to the [Azure portal](http://portal.azure.com).
 * Select 'Create a resource'. In the search box, enter and select 'Oracle WebLogic Server With Admin Server'. Hit create.
 * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>`.
-* Select a region closest to you. 
+* Select a region closest to you.
+* For the WebLogic image, select a 12.2.1.3 version.
 * For "Credentails for Virtual Machines and WebLogic"
    * For the "Password for admin account of VMs", enter 'Secret123456'. 
    * For the "Password for WebLogic Administrator", enter 'Secret123456'.
