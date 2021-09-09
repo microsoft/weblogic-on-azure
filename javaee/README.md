@@ -1,7 +1,7 @@
 # Basic Java EE CRUD Application
 This is a basic Java EE 7 application used throughout the WebLogic on Azure demos. It is a simple CRUD application. It uses Maven and Java EE 7 (JAX-RS, EJB, CDI, JPA, JSF, Bean Validation).
 
-We use Eclipse but you can use any Maven and WebLogic capable IDE. We use PostgreSQL but you can use any relational database such as Oracle or SQL Server.
+We use Eclipse but you can use any Maven and WebLogic capable IDE. We use PostgreSQL but you can use any relational database such as Oracle DB or SQL Server.
 
 ## Setup
 
