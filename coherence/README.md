@@ -1,21 +1,21 @@
-# Deploying a Java EE Application on Azure Using a WebLogic Virtual Machine Cluster
-This demo shows how you can deploy a Java EE application to Azure into a WebLogic cluster.
-
+# Deploying a Java EE Application with Coherence on Azure Using a WebLogic Virtual Machine Cluster
+This demo shows how you can deploy a Java EE application with Coherence to Azure into a WebLogic cluster using a marketplace solution.
 ## Setup
 
-* Install the latest version of Oracle JDK 8 (we used [8u241](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)).
+* Install the latest version of Oracle JDK 8 (we used [8u291](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)).
 * Install [the 2020-06 release of Eclipse for Enterprise Java Developers](https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-enterprise-java-developers) (this is the latest Eclipse IDE version that supports Java SE 8).
 * Install WebLogic 12.2.1.3 (note - not the latest version) using the Quick Installer by downloading it from [here](https://www.oracle.com/middleware/technologies/weblogic-server-downloads.html). You need this locally even if you are not running WebLogic locally because the Eclipse WebLogic deployment support needs it.
-* Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
+* Install the Window Subsystem for Linux (or other Linux, we used [WSL 2 with Ubuntu 18.04 LST](https://docs.microsoft.com/en-us/windows/wsl/install-win10)).
+* Download this repository somewhere in your WSL file system (easiest way might be to download as a zip and extract).
 * You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free).
 
 ## Start Managed PostgreSQL on Azure
 
-We will be using the fully managed PostgreSQL offering in Azure for this demo. Please set it up now unless you have done so already. Below is how we set it up. 
+We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up. 
 
 * Go to the [Azure portal](http://portal.azure.com).
-* Select 'Create a resource'. In the search box, enter and select 'Azure Database for PostgreSQL'. Hit create. Select a single server.
-* The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short, reasonably unique, and less than 10 characters in length.
+* Select Create a resource -> Databases -> Azure Database for PostgreSQL.  In "How do you plan to use the service?" select "single server".
+* The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique, and less than 10 charracters in length.
 * Create and specify a new resource group named weblogic-cafe-db-group-`<your suffix>` . 
 * Specify the Server name to be weblogic-cafe-db-`<your suffix>`.
 * Specify the location to be a location close to you.
@@ -50,10 +50,12 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * Go to the [Azure portal](https://ms.portal.azure.com/).
 * Use the search bar on the top to navigate to the Marketplace.
 * In the Marketplace, type in 'Oracle WebLogic Server Cluster' in the search bar and click Enter.
-* Locate the offer named 'Oracle WebLogic Server Cluster' and click 'Create'.
-* Create and specify a new resource group named weblogic-cafe-group-`<your suffix>`.
-* Select a region closest to you.
-* For the WebLogic image, select a 12.2.1.3 version.
+* Locate the offer named 'Oracle WebLogic Server Cluster' and click 'Create'. 
+* Ensure "Oracle Enterprise Java" is selected in "Subscription", or select your own subscription.
+* In the basics blade, for "Project details"
+   * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . 
+   * Select Region '(US) East US'. 
+   * Select Oracle WebLogic Image 'WebLogic Server 12.2.1.3.0 and JDK8 on Oracle Linux 7.4'
 * For "Credentails for Virtual Machines and WebLogic"
    * For the "Password for admin account of VMs", enter 'Secret123456'. 
    * For the "Password for WebLogic Administrator", enter 'Secret123456'.
@@ -64,10 +66,8 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * In the "Azure Application Gateway" use these values
    * Toggle "Connect to Azure Application Gateway" to `Yes`.
    * Choose "Generate a self-signed certificate" for the "Select desired TLS/SSL certificate option".
-   * To auto-generate a self-signed certificate, you will need to add user-assigned managed identities (at least one), click "Add".
+   * To auto-generate a self-signed certificate, you will need to add user-assigned managed identities(at least one), click "Add".
    * In the window pops from right, choose weblogic-cafe-managed-identity-`<your suffix>`, then click "Add"
-* Click Next.
-* In "DNS Configuration", leave "Configure Custom DNS Alias?" with `No` selected.
 * Click Next.
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`. 
@@ -77,17 +77,20 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * Specify the Database Username to be 'postgres@weblogic-cafe-db-`<your suffix>`'
    * Enter the Database Password as 'Secret123!' 
 * Click Next.
+* In "DNS Configuration", leave "Configure Custom DNS Alias?" with `No` selected.
+* Click Next.
 * In "Azure Active Directory", leave "Connect to Active Directory" with `No` selected.
 * Click Next.
 * In "Elasticsearch and Kibana", leave "Export logs to Elasticsearch?" with `No` selected.
 * Click Next.
-* In "Coherence", leave "Use Coherence cache?" with `No` selected.
+* In "Coherence", toggle "Use Coherence cache?" to `Yes`. Leave other values to default.
 * Click Next:Review + create
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the final screen, click Create.
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
 * Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
-
+* Find and click on myAppGateway. Copy the DNS name for the Application Gateway as `<app gateway DNS>`.
+* Find and click on wls-nsg. In the Overview page, find `WebLogicManagedChannelPortsDenied` under the Inbound Security Rules, click on it. In the pop window, select `Allow` for Action and click `Save`, wait for the update to be completed. This will open portal 8501 which we will use later.
 
 ## Setting Up WebLogic in Eclipse
 The next step is to get the application up and running.
@@ -130,126 +133,34 @@ Ensure that the deployment action from Eclipse will target the WebLogic Cluster 
    * Click Outputs
    * Copy appGatewayURL. The application will be available at `<appGatewayURL>`/weblogic-cafe.
 
-## Exploring the Application
-
-The application is composed of:
-
-- **A RESTFul service*:** `<appGatewayURL>`/weblogic-cafe/rest/coffees
-
-	- **_GET by Id_**: `<appGatewayURL>`/weblogic-cafe/rest/coffees/{id} 
-	- **_GET all_**: `<appGatewayURL>`/weblogic-cafe/rest/coffees
-	- **_POST_** to add a new element at: `<appGatewayURL>`/weblogic-cafe/rest/coffees
-	- **_DELETE_** to delete an element at: `<appGatewayURL>`/weblogic-cafe/rest/coffees/{id}
-
-- **A JSF Client:** `<appGatewayURL>`/weblogic-cafe/index.xhtml
-
-Feel free to take a minute to explore the application.
-
-Some sample interactions:
-
+## Link to the Coherence Mbean using JConsole
+The Coherence Mbean server will be started in the oldest member of the cluster, so we need to find it. [JConsole](https://en.wikipedia.org/wiki/JConsole) is a GUI tool that can monitor remote JVM, and it comes for free with JDK.
+* Go to `<admin server DNS name>:7001/console`
+* Signin with Username=`weblogic`, Password=`Secret123456`.
+* Click `Diagonostics` in "Domain Structure" window, and go to `Log Files`.
+* Look for `ServerLog` of Server `msp1`, select and click `view` button.
+* Click `Customize this table` and change `Time Interval` to `All` and `Number of rows displayed per page` to `5000`, click `Apply`
+* Use browser's search function to look for `oldestMember`, write down the machine name `<oldestMember>`.
+* In Azure Portal, go to resource group weblogic-cafe-group-`<your suffix>`.
+* Search for the virtual machine named `<oldestMember>`, click on it to enter the Overview page.
+* Copy the Public IP address `<oldestMemberIP>`.
+* Open JConsole using the following command:
+```bash
+"<Path to JDK>\bin\jconsole" -J-Djava.class.path="<Path to JDK>\lib\jconsole.jar;<Path to JDK>\lib\tools.jar;<Path to Oracle Home>\wlserver\server\lib\weblogic.jar" -J-Djmx.remote.protocol.provider.pkgs=weblogic.management.remote
 ```
-curl --verbose http://wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com/weblogic-cafe/rest/coffees
-*   Trying 52.170.168.238...
-* TCP_NODELAY set
-* Connected to wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com (52.170.168.238) port 80 (#0)
-> GET /weblogic-cafe/rest/coffees HTTP/1.1
-> Host: wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com
-> User-Agent: curl/7.58.0
-> Accept: */*
->
-< HTTP/1.1 200 OK
-< Date: Wed, 29 Apr 2020 06:32:49 GMT
-< Content-Type: application/xml
-< Content-Length: 463
-< Connection: keep-alive
-< Set-Cookie: ApplicationGatewayAffinity=87a187c991cdf614b82980abcbd81713; Path=/
-< X-ORACLE-DMS-ECID: 70be89de-8458-492b-bbdd-698fbf5b2040-00000033
-< X-ORACLE-DMS-RID: 0
-<
-* Connection #0 to host wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com left intact
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><coffees><coffee><id>1</id><name>Weak</name><price>0.25</price></coffee><coffee><id>2</id><name>Strong</name><price>5.0</price></coffee><coffee><id>3</id><name>Medium</name><price>5.0</price></coffee><coffee><id>4</id><name>Medium 2</name><price>6.0</price></coffee><coffee><id>5</id><name>Medium 3</name><price>7.0</price></coffee><coffee><id>6</id><name>Medium 4</name><price>8.0</price></coffee></coffees>* Closing connection 0
-
-
-curl --verbose http://wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com/weblogic-cafe/rest/coffees/1
-*   Trying 52.170.168.238...
-* TCP_NODELAY set
-* Connected to wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com (52.170.168.238) port 80 (#0)
-> GET /weblogic-cafe/rest/coffees/1 HTTP/1.1
-> Host: wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com
-> User-Agent: curl/7.58.0
-> Accept: */*
->
-< HTTP/1.1 200 OK
-< Date: Wed, 29 Apr 2020 06:34:33 GMT
-< Content-Type: application/xml
-< Content-Length: 101
-< Connection: keep-alive
-< Set-Cookie: ApplicationGatewayAffinity=87a187c991cdf614b82980abcbd81713; Path=/
-< X-ORACLE-DMS-ECID: 70be89de-8458-492b-bbdd-698fbf5b2040-00000034
-< X-ORACLE-DMS-RID: 0
-<
-* Connection #0 to host wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com left intact
-<?xml version="1.0" encoding="UTF-8"?><coffee><id>1</id><name>Weak</name><price>0.25</price></coffee>* Closing connection 0
-
-cat medium.xml
-<?xml version="1.0" encoding="UTF-8"?>
-<coffee>
-  <id>208</id>
-  <name>Medium 7</name>
-  <price>7.0</price>
-</coffee>
-
-curl --verbose -X POST -d @medium.xml http://wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com/weblogic-cafe/rest/coffees --header "Content-Type: application/xml"
-
-Note: Unnecessary use of -X or --request, POST is already inferred.
-*   Trying 52.170.168.238...
-* TCP_NODELAY set
-* Connected to wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com (52.170.168.238) port 80 (#0)
-> POST /weblogic-cafe/rest/coffees HTTP/1.1
-> Host: wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com
-> User-Agent: curl/7.58.0
-> Accept: */*
-> Content-Type: application/xml
-> Content-Length: 112
->
-* upload completely sent off: 112 out of 112 bytes
-< HTTP/1.1 201 Created
-< Date: Wed, 29 Apr 2020 06:38:12 GMT
-< Content-Length: 0
-< Connection: keep-alive
-< Set-Cookie: ApplicationGatewayAffinity=87a187c991cdf614b82980abcbd81713; Path=/
-< Location: http://mspVM1:8001/weblogic-cafe/rest/coffees/208
-< X-ORACLE-DMS-ECID: 70be89de-8458-492b-bbdd-698fbf5b2040-00000035
-< X-ORACLE-DMS-RID: 0
-<
-* Connection #0 to host wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com left intact
-* Closing connection 0
-
-Get the value from the Location header.
-
-curl --verbose http://wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com/weblogic-cafe/rest/coffees/208
-
-*   Trying 52.170.168.238...
-* TCP_NODELAY set
-* Connected to wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com (52.170.168.238) port 80 (#0)
-> GET /weblogic-cafe/rest/coffees/208 HTTP/1.1
-> Host: wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com
-> User-Agent: curl/7.58.0
-> Accept: */*
->
-< HTTP/1.1 200 OK
-< Date: Wed, 29 Apr 2020 06:38:46 GMT
-< Content-Type: application/xml
-< Content-Length: 106
-< Connection: keep-alive
-< Set-Cookie: ApplicationGatewayAffinity=87a187c991cdf614b82980abcbd81713; Path=/
-< X-ORACLE-DMS-ECID: 70be89de-8458-492b-bbdd-698fbf5b2040-00000036
-< X-ORACLE-DMS-RID: 0
-<
-* Connection #0 to host wlsclusterappgw34fcab-wls-cluster-appgateway-0428-clusterdomain.eastus.cloudapp.azure.com left intact
-<?xml version="1.0" encoding="UTF-8"?><coffee><id>208</id><name>Medium 7</name><price>7.0</price></coffee>* Closing connection 0
-
+* In the JConsole:New Connection window, select `Remote Process` and fill the address as following:
+```bash
+service:jmx:t3://`<oldestMemberIP>`:8501/jndi/weblogic.management.mbeanservers.runtime
 ```
+* Fill in Username=`weblogic`, Password=`Secret123456`, click Connect. If a window pop up and says 'Secure connection failed. Retry insecurely?', click `Insecure connection`
+* After the connection is established, verify it by checking there is a green connection icon on the top right.
+
+## Test the cache
+* In JConsole switch to the `Mbeans` tab.
+* Step into the Coherence cache attribute window by clicking `Coherence->Cache->"oracle.coherence.web:DistributedSessions"->session-storage->myCoherence->mspStorage1->3->back->Attributes`.
+* You can see the size now is `0`. That is because you haven't access the WebLogic-Cafe app.
+* Now open Microsoft Edge and go to `<app gateway DNS>`/weblogic-cafe/index.xhtml, right now you just created a SessionScoped bean, wait for a few second and you will see the cache size increment by 1. Accessing this page in another tab won't affect this number because you will hit the cache.
+* Open a new InPrivate Window and access the page, the cache size will be increased because the private window does not share sessions with previous ones.
 
 ## Cleaning Up
 

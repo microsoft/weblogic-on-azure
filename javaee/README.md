@@ -33,7 +33,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
 * Under Settings, open the connection security panel.
    * Toggle "Allow access to Azure services" to "Yes".
    * Toggle "Enforce SSL connection" to "DISABLED". 
-   * Hit Add client IP. This allows connection to the database from the IP you are currently using to access Azure.  As a precaution, verify the IP entered is actually your IP.  You can do this by googling "what is my ip".  Hit Save.
+   * Hit Add current client IP address (<`your IP address>`).  Hit Save.
 
 ## Setting Up WebLogic
 The next step is to get the application up and running. Follow the steps below to do so.

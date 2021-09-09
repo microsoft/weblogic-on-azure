@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<weblogic-web-app xmlns="http://www.bea.com/ns/weblogic/weblogic-web-app"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+
+  <session-descriptor>
+    <!-- from cordell on -->
+    <!-- Enabling Web Applications to Share the Same Session.
+      Application that shares session has to enable this setting.
+    <sharing-enabled>true</sharing-enabled>
+    -->
+    <persistent-store-type>coherence-web</persistent-store-type>
+    <sharing-enabled>true</sharing-enabled>
+    <cookie-path>/</cookie-path>
+    <debug-enabled>true</debug-enabled>
+  </session-descriptor>
+</weblogic-web-app>
