@@ -64,7 +64,7 @@ set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRI
 
 ## Connect WebLogic to the PostgreSQL Server
 
-* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Unless you changed them, the userid is `weblogic` and the password is `welcome1`.  
+* Once WebLogic starts up, go to http://localhost:7001/console/ and log onto the console. Unless you changed them, the user ID is `weblogic` and the password is `welcome1`.  
    * Click on Services -> Data Sources. Select New -> Generic Data Source. 
    * Enter the name as 'WebLogicCafeDB', JNDI name as 'jdbc/WebLogicCafeDB' and select the database type to be PostgreSQL. Click next. 
    * Accept the defaults and click next.  Do not click Finish, even though you could do so.
