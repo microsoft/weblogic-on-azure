@@ -1,11 +1,11 @@
 # Basic Java EE CRUD Application
 This is a basic Java EE 7 application used throughout the WebLogic on Azure demos. It is a simple CRUD application. It uses Maven and Java EE 7 (JAX-RS, EJB, CDI, JPA, JSF, Bean Validation).
 
-We use Eclipse but you can use any Maven and WebLogic capable IDE. We use PostgreSQL but you can use any relational database such as Oracle or SQL Server.
+We use Eclipse but you can use any Maven and WebLogic capable IDE. We use PostgreSQL but you can use any relational database such as Oracle DB or SQL Server.
 
 ## Setup
 
-* Install the latest version of Oracle JDK 8 (we used [8u271](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)).
+* Install the latest version of [Oracle JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html) (we used 8u271).
 * Install [the 2020-06 release of Eclipse for Enterprise Java Developers](https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-enterprise-java-developers) (this is the latest Eclipse IDE version that supports Java SE 8).
 * Install WebLogic 12.2.1.3 (note - not the latest version) using the Quick Installer by downloading it from [here](https://www.oracle.com/middleware/technologies/weblogic-server-downloads.html).
 * Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
@@ -33,7 +33,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. B
 * Under Settings, open the connection security panel.
    * Toggle "Allow access to Azure services" to "Yes".
    * Toggle "Enforce SSL connection" to "DISABLED". 
-   * Hit Add current client IP address (<`your IP address>`).  Hit Save.
+   * Hit "Add current client IP address (<`your IP address>`)".  Hit Save.
 
 ## Setting Up WebLogic
 The next step is to get the application up and running. Follow the steps below to do so.
