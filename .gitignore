@@ -1,2 +1,4 @@
 changebundle*
 .vscode/
+javaee/weblogic-cafe/.factorypath
+javaee/weblogic-cafe/src/main/webapp/META-INF/MANIFEST.MF
