@@ -47,17 +47,17 @@ The next step is to get the application up and running. Follow the steps below t
    * Enter where the Oracle JDK is installed.  Click next. 
    * For the domain directory, hit Create -> Create Domain. 
    * For the domain name, specify 'domain1'. Hit 'Finish' to add the new server to Eclipse.  If Eclipse asks to create a master password hint, do so.  Consider using `<your suffix>` for the questions and answers.
-   * Copy the Postgres driver to where you have WebLogic installed under server/lib. This file is located in the javaee/server directory where you downloaded the application code.
-   * Depending on your platform, find the commExtEnv.sh or commExtEnv.cmd file in the oracle_common/common/bin directory where you have WebLogic installed. You will need to add the Postgres driver to the WebLogic classpath. The end result will look something like the following.  There are several assignments to `WEBLOGIC_CLASSPATH`.  You will likely need to edit the first one.
+   * Copy the PostgreDQL driver to where you have WebLogic installed under server/lib. This file is located in the javaee/server directory where you downloaded the application code.
+   * Depending on your platform, find the commExtEnv.sh or commExtEnv.cmd file in the oracle_common/common/bin directory where you have WebLogic installed. You will need to add the PostgreSQL driver to the WebLogic classpath. The end result will look something like the following.  There are several assignments to `WEBLOGIC_CLASSPATH`.  You will likely need to edit the first one.
 
 #### commExtEnv.sh
 ```
-WEBLOGIC_CLASSPATH="${JAVA_HOME}/lib/tools.jar${CLASSPATHSEP}${PROFILE_CLASSPATH}${CLASSPATHSEP}${ANT_CONTRIB}/ant-contrib-1.0b3.jar${CLASSPATHSEP}${CAM_NODEMANAGER_JAR_PATH}${CLASSPATHSEP}${WL_HOME}/server/lib/postgresql-42.2.4.jar"
+WEBLOGIC_CLASSPATH="${JAVA_HOME}/lib/tools.jar${CLASSPATHSEP}${PROFILE_CLASSPATH}${CLASSPATHSEP}${ANT_CONTRIB}/ant-contrib-1.0b3.jar${CLASSPATHSEP}${CAM_NODEMANAGER_JAR_PATH}${CLASSPATHSEP}${WL_HOME}/server/lib/postgresql-42.2.23.jar"
 ```
 
 #### commExtEnv.cmd
 ```
-set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRIB%\ant-contrib-1.0b3.jar;%CAM_NODEMANAGER_JAR_PATH%;%WL_HOME%\server\lib\postgresql-42.2.4.jar
+set WEBLOGIC_CLASSPATH=%JAVA_HOME%\lib\tools.jar;%PROFILE_CLASSPATH%;%ANT_CONTRIB%\ant-contrib-1.0b3.jar;%CAM_NODEMANAGER_JAR_PATH%;%WL_HOME%\server\lib\postgresql-42.2.23.jar
 ```
 
 * Go to the 'Servers' panel, secondary click on the registered WebLogic instance and select Start.  If the server does not start, put aside this workshop and troubleshoot why the server did not start.  Once the server is successfully started from Eclipse, you may continue.
