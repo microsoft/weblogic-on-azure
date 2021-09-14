@@ -34,6 +34,8 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
+<!---
 # FAQ
 ## Eclipse release 2020.9 comes with a default Maven which causes warnings thrown during deployment
 It does not block anything, but you may see 'Multiple bindings found for slf4j' during deployment when using this Eclipse release. It's related to a known issue of the IDE itself: [506676 – Class path contains multiple SLF4J bindings (eclipse.org)](https://bugs.eclipse.org/bugs/show_bug.cgi?id=506676). And the workaround to it is installing maven separately and config to use the installed one instead of using the default one. To access the settings: 'Window->Preferences->Maven->Installations'.
+-->
