@@ -83,7 +83,7 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * In "Elasticsearch and Kibana", leave "Export logs to Elasticsearch?" with `No` selected.
 * Click Next.
 * In "Coherence", leave "Use Coherence cache?" with `No` selected.
-* Click Next:Review + create
+* Click 'Next: Review + create'
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the final screen, click Create.
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
