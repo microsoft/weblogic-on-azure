@@ -60,7 +60,7 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * For Number of VMs, change the value to 3.
 * For "Optional Basic Configuration", ensure  `Yes` is selected to accept default for optional configuration.
 * Click Next.
-* In "TLS/SSL Configuration", leave "Configure WebLogic Administration Console on HTTPS (Secure) port, with your own TLS/SSL Certificate?" with `No` selected.
+* In "TLS/SSL Configuration", leave "Configure WebLogic Administration Console on HTTPS (Secure) port, with your own TLS/SSL Certificate?" with `No` selected. Click next.
 * In the "Azure Application Gateway" use these values
    * Toggle "Connect to Azure Application Gateway" to `Yes`.
    * Choose "Generate a self-signed certificate" for the "Select desired TLS/SSL certificate option".
