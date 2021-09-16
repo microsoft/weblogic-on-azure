@@ -42,7 +42,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. P
 * Create and specify a new resource group named weblogic-cafe-managed-identity-group-`<your suffix>`.
 * Specify the region to be a location close to you.
 * Specify the Instance name to be weblogic-cafe-managed-identity-`<your suffix>`. 
-* Click Review + create -> Create
+* Click Review + create -> Create.
 
 ## Create the WebLogic Cluster on Azure
 The next step is to get a WebLogic cluster up and running. Follow the steps below to do so.
