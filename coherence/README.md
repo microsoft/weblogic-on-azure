@@ -1,5 +1,6 @@
-# Deploying a Java EE Application with Coherence on Azure Using a WebLogic Virtual Machine Cluster
-This demo shows how you can deploy a Java EE application with Coherence to Azure into a WebLogic cluster using a marketplace solution.
+# Deploying a Java Application with Coherence on Azure Using a WebLogic Virtual Machine Cluster
+This demo shows how you can deploy a Java application with Coherence to Azure into a WebLogic cluster.
+
 ## Setup
 
 * Install the latest version of Oracle JDK 8 (we used [8u291](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)).
