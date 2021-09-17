@@ -51,7 +51,6 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * Use the search bar on the top to navigate to the Marketplace.
 * In the Marketplace, type in 'Oracle WebLogic Server Cluster' in the search bar and click Enter.
 * Locate the offer named 'Oracle WebLogic Server Cluster' and click 'Create'. 
-* Ensure "Oracle Enterprise Java" is selected in "Subscription", or select your own subscription.
 * In the basics blade, for "Project details"
    * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . 
    * Select Region '(US) East US'. 
