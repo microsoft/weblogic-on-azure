@@ -18,7 +18,7 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. P
 * The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique, and less than 10 charracters in length.
 * Create and specify a new resource group named weblogic-cafe-db-group-`<your suffix>` . 
 * Specify the Server name to be weblogic-cafe-db-`<your suffix>`.
-* Specify the location to be a location close to you.
+* Specify the region to be a location close to you.
 * Leave the Version at its default.
 * In Compute + Storage click "Configure Server" then choose Basic.
    * Set vCore to the minimum.
