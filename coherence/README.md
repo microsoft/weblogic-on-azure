@@ -50,11 +50,10 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * Go to the [Azure portal](https://ms.portal.azure.com/).
 * Use the search bar on the top to navigate to the Marketplace.
 * In the Marketplace, type in 'Oracle WebLogic Server Cluster' in the search bar and click Enter.
-* Locate the offer named 'Oracle WebLogic Server Cluster' and click 'Create'. 
-* In the basics blade, for "Project details"
-   * Create and specify a new resource group named weblogic-cafe-group-`<your suffix>` . 
-   * Select Region '(US) East US'. 
-   * Select Oracle WebLogic Image 'WebLogic Server 12.2.1.3.0 and JDK8 on Oracle Linux 7.4'
+* Locate the offer named 'Oracle WebLogic Server Cluster' and click 'Create'.
+* Create and specify a new resource group named weblogic-cafe-group-`<your suffix>`.
+* Select a region closest to you.
+* For the WebLogic image, select a 12.2.1.3 version.
 * For "Credentails for Virtual Machines and WebLogic"
    * For the "Password for admin account of VMs", enter 'Secret123456'. 
    * For the "Password for WebLogic Administrator", enter 'Secret123456'.
