@@ -11,8 +11,7 @@ This demo shows how you can deploy a Java application with Coherence to Azure in
 * You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free).
 
 ## Start Managed PostgreSQL on Azure
-
-We will be using the fully managed PostgreSQL offering in Azure for this demo. Below is how we set it up.
+We will be using the fully managed PostgreSQL offering in Azure for this demo. Please set it up now unless you have done so already. Below is how we set it up. 
 
 * Go to the [Azure portal](http://portal.azure.com).
 * Select 'Create a resource'. In the search box, enter and select 'Azure Database for PostgreSQL'. Hit create. Select a single server.
