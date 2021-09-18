@@ -153,9 +153,9 @@ service:jmx:t3://<Oldest Machine IP>:8501/jndi/weblogic.management.mbeanservers.
 ## Test the cache
 * In JConsole switch to the `Mbeans` tab.
 * Step into the Coherence cache attribute window by clicking `Coherence->Cache->"oracle.coherence.web:DistributedSessions"->session-storage->myCoherence->mspStorage1->3->back->Attributes`.
-* You can see the size now is `0`. That is because you haven't access the WebLogic-Cafe app.
-* Now open Microsoft Edge and go to `<app gateway DNS>`/weblogic-cafe/index.xhtml, right now you just created a SessionScoped bean, wait for a few second and you will see the cache size increment by 1. Accessing this page in another tab won't affect this number because you will hit the cache.
-* Open a new InPrivate Window and access the page, the cache size will be increased because the private window does not share sessions with previous ones.
+* You can see the size now is `0`. That is because you haven't accessed the webLogic-cafe application yet.
+* Now go to `<app gateway DNS>`/weblogic-cafe. The application just created a session scoped bean. Click the 'Refresh' button in JConsole and you will see the cache size increment by 1.  Accessing the application in another tab won't affect this number because you will hit the session cache.
+* Open a new incognito window and access the webLogic-cafe application again. The cache size will increase because the new window does not share sessions with previous window.
 
 ## Cleaning Up
 
