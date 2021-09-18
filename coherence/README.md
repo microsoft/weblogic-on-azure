@@ -125,7 +125,7 @@ Ensure that the deployment action from Eclipse will target the WebLogic Cluster 
    * If a dialog appears saying "Select which server to use", select the cluster one, check the "Always use this server when running this project, and click Finish.
 * Once the application runs, Eclise will try to open it up in a browser. The browser will fail with a 404. This is normal. We delibarately did not deploy the appllication to the admin server.
 * In the azure portal go to 'Resource groups'. Find and click weblogic-cafe-group-`<your suffix>`.
-* Find and click on myAppGateway. Copy the DNS name for the Application Gateway.
+* Find and click on myAppGateway. Find and copy the DNS name for the Application Gateway.
 * The application will be available at `<App Gateway DNS>`/weblogic-cafe.
 
 ## Link to the Coherence Mbean using JConsole
