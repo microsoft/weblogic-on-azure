@@ -154,7 +154,7 @@ service:jmx:t3://<Oldest Machine IP>:8501/jndi/weblogic.management.mbeanservers.
 * Step into the Coherence cache attribute window by clicking `Coherence->Cache->"oracle.coherence.web:DistributedSessions"->session-storage->myCoherence->mspStorage1->3->back->Attributes`.
 * You can see the size now is `0`. That is because you haven't accessed the webLogic-cafe application yet.
 * Now go to `<app gateway DNS>`/weblogic-cafe. The application just created a session scoped bean. Click the 'Refresh' button in JConsole and you will see the cache size increment by 1.  Accessing the application in another tab won't affect this number because you will hit the session cache.
-* Open a new incognito window and access the webLogic-cafe application again. The cache size will increase because the new window does not share sessions with previous window.
+* Open a new incognito browser window and access the webLogic-cafe application again. The cache size will increase because the new window does not share sessions with previous window.
 
 ## Cleaning Up
 Once you are done exploring all aspects of the demo, you should delete the weblogic-cafe-group-`<your suffix>`, weblogic-cafe-managed-identity-group-`<your suffix>` and weblogic-cafe-db-group-`<your suffix>` resource groups. You can do this by going to the portal, going to resource groups, finding and clicking the groups and clicking delete. This is especially important if you are not using a free subscription! If you do keep these resources around (for example to begin your own prototype), you should in the least use your own passwords and make the corresponding changes in the demo code.
