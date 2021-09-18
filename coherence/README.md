@@ -128,8 +128,8 @@ Ensure that the deployment action from Eclipse will target the WebLogic Cluster 
 * Find and click on myAppGateway. Find and copy the DNS name for the Application Gateway.
 * The application will be available at `<App Gateway DNS>`/weblogic-cafe.
 
-## Link to the Coherence Mbean using JConsole
-The Coherence Mbean server will be started in the oldest member of the cluster, so we need to find it. [JConsole](https://en.wikipedia.org/wiki/JConsole) is a GUI tool that can monitor remote JVM, and it comes for free with JDK.
+## Connect to the Coherence JMX Server using JConsole
+The Coherence Mbean server will be started as the oldest member of the cluster, so we need to find it and connect to it. We can connect using JConsole. [JConsole](https://en.wikipedia.org/wiki/JConsole) is a GUI tool that can monitor remote JVM, and it comes for free with JDK.
 * Go to `<admin server DNS name>:7001/console`
 * Signin with Username=`weblogic`, Password=`Secret123456`.
 * Click `Diagonostics` in "Domain Structure" window, and go to `Log Files`.
