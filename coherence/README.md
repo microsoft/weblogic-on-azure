@@ -66,6 +66,7 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * Choose "Generate a self-signed certificate" for the "Select desired TLS/SSL certificate option".
    * To auto-generate a self-signed certificate, you will need to add user-assigned managed identities(at least one), click "Add".
    * In the window pops from right, choose weblogic-cafe-managed-identity-`<your suffix>`, then click "Add"
+   * Ensure the managed identity is selected.
 * Click Next.
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`. 
