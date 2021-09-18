@@ -145,7 +145,7 @@ The Coherence Mbean server will be started on the oldest machine on the cluster,
 ```
 * In the 'JConsole: New Connection' window, select `Remote Process` and fill the address as following:
 ```
-service:jmx:t3://`<Oldest Machine IP>`:8501/jndi/weblogic.management.mbeanservers.runtime
+service:jmx:t3://<Oldest Machine IP>:8501/jndi/weblogic.management.mbeanservers.runtime
 ```
 * Fill in username=`weblogic`, password=`Secret123456`, click Connect. If a window pop up and says 'Secure connection failed. Retry insecurely?', click `Insecure connection`.
 * After the connection is established, verify it by checking there is a green connection icon on the top right.
