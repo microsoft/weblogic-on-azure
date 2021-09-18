@@ -88,8 +88,8 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * On the final screen, click Create.
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
 * Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
-* Find and click on myAppGateway. Copy the DNS name for the Application Gateway as `<app gateway DNS>`.
-* Find and click on wls-nsg. In the Overview page, find `WebLogicManagedChannelPortsDenied` under the Inbound Security Rules, click on it. In the pop window, select `Allow` for Action and click `Save`, wait for the update to be completed. This will open portal 8501 which we will use later.
+* In the portal go to 'All resources'. Find and click on myAppGateway. Copy the DNS name for the Application Gateway as `<app gateway DNS>`.
+* In the portal go to 'All resources'. Find and click on wls-nsg. In the Overview page, find `WebLogicManagedChannelPortsDenied` under the Inbound Security Rules, click on it. In the pop window, select `Allow` for Action and click `Save`, wait for the update to be completed. This will open portal 8501 which we will use later.
 
 ## Setting Up WebLogic in Eclipse
 The next step is to get the application up and running.
