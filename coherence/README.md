@@ -88,7 +88,6 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * On the final screen, click Create.
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
 * Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
-* In the portal go to 'All resources'. Find and click on myAppGateway. Copy the DNS name for the Application Gateway as `<app gateway DNS>`.
 * In the portal go to 'All resources'. Find and click on wls-nsg. In the Overview page, find `WebLogicManagedChannelPortsDenied` under the Inbound Security Rules, click on it. In the pop window, select `Allow` for Action and click `Save`, wait for the update to be completed. This will open portal 8501 which we will use later.
 
 ## Setting Up WebLogic in Eclipse
@@ -125,12 +124,9 @@ Ensure that the deployment action from Eclipse will target the WebLogic Cluster 
 * Secondary click on weblogic-cafe in the Project Explorer and choose Run As -> Run on Server.  
    * If a dialog appears saying "Select which server to use", select the cluster one, check the "Always use this server when running this project, and click Finish.
 * Once the application runs, Eclise will try to open it up in a browser. The browser will fail with a 404. This is normal. We delibarately did not deploy the appllication to the admin server.
-* In the azure portal go to 'All resources'. Enter `<your suffix>` into the filter box and press enter.
-* Find and click weblogic-cafe-group-`<your suffix>`.
-*  Under Settings, open Deployments panel.
-   * Scroll down and find deployment whose name starts with something like `oracle.20191007-arm-oraclelinux-wls-cluster`, click the deployment.
-   * Click Outputs
-   * Copy appGatewayURL. The application will be available at `<appGatewayURL>`/weblogic-cafe.
+* In the azure portal go to 'Resource groups'. Find and click weblogic-cafe-group-`<your suffix>`.
+* Find and click on myAppGateway. Copy the DNS name for the Application Gateway.
+* The application will be available at `<App Gateway DNS>`/weblogic-cafe.
 
 ## Link to the Coherence Mbean using JConsole
 The Coherence Mbean server will be started in the oldest member of the cluster, so we need to find it. [JConsole](https://en.wikipedia.org/wiki/JConsole) is a GUI tool that can monitor remote JVM, and it comes for free with JDK.
