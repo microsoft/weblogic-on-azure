@@ -68,6 +68,8 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * In the window pops from right, choose weblogic-cafe-managed-identity-`<your suffix>`, then click "Add"
    * Ensure the managed identity is selected.
 * Click Next.
+* In "DNS Configuration", leave "Configure Custom DNS Alias?" with `No` selected.
+* Click Next.
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`. 
    * For "Choose database type", from the dropdown menu, select the option for "Azure Database for PostgreSQL".
@@ -75,8 +77,6 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * Specify DataSource Connection String to be 'jdbc:postgresql://weblogic-cafe-db-`<your suffix>`.postgres.database.azure.com:5432/postgres'
    * Specify the Database Username to be 'postgres@weblogic-cafe-db-`<your suffix>`'
    * Enter the Database Password as 'Secret123!' 
-* Click Next.
-* In "DNS Configuration", leave "Configure Custom DNS Alias?" with `No` selected.
 * Click Next.
 * In "Azure Active Directory", leave "Connect to Active Directory" with `No` selected.
 * Click Next.
