@@ -98,7 +98,7 @@ The next step is to get the application up and running.
    * Select Oracle -> Oracle WebLogic Server Tools. Click next. Accept the license agreement, click 'Finish'.  Eclipse may ask to be restarted. If so, comply with the request.
 * Go to the 'Servers' panel, secondary click. 
 * Select New -> Server -> Oracle -> Oracle WebLogic Server. Click Next.
-* Choose remote, for the remote host enter `<admin server DNS name>`
+* Choose remote, for the remote host enter `<admin server DNS name>`.
 * Enter the WebLogic admin username/password from above.
 * Click "Test connection".  If "Test connection succeeded!" appears, click OK and you may continue.  Otherwise, troubleshoot and resolve the reason for the connection failure.
 * Click 'Finish'.
