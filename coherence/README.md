@@ -106,8 +106,8 @@ The next step is to get the application up and running.
 * Click 'Finish'.
 
 ## Open weblogic-cafe in the IDE
-* Get the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects.  Click Next
-* Then browse to where you have this repository code in your file system and select javaee/weblogic-cafe and click "Open".  
+* Get the stateful Coherence version of the weblogic-cafe application into the IDE. In order to do that, go to File -> Import -> Maven -> Existing Maven Projects. Click Next.
+* Then browse to where you have this repository code in your file system and select coherence/weblogic-cafe and click "Open".
 * Accept the rest of the defaults and click "finish".
 * Once the application loads, you should do a full Maven build by going to the application and secondary clicking -> Run As -> Maven install.
    * You must see `BUILD SUCCESS` in the Eclipse console in order to proceed.  If you do not, troubleshoot the build problem and resolve it.  Once the application has successfully built, you may continue.
