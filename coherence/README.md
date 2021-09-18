@@ -145,9 +145,11 @@ The Coherence Mbean server will be started on the oldest machine of the cluster,
 * For PowerShell, please use the following:
 ```
 [<Path to JDK>\bin\]jconsole '-J-Djava.class.path="<Path to JDK>\lib\jconsole.jar;<Path to JDK>\lib\tools.jar;<Path to Oracle Home>\wlserver\server\lib\weblogic.jar"' '-J-Djmx.remote.protocol.provider.pkgs=weblogic.management.remote'
+```
 * For Mac and Linux, please use the following:
 ```
 [<Path to JDK>/bin/]jconsole -J-Djava.class.path="<Path to JDK>/lib/jconsole.jar:<Path to JDK>/lib/tools.jar:<Path to Oracle Home>/wlserver/server/lib/weblogic.jar" -J-Djmx.remote.protocol.provider.pkgs=weblogic.management.remote
+```
 * In the 'JConsole: New Connection' window, select `Remote Process` and fill the address as following:
 ```
 service:jmx:t3://<Oldest Machine IP>:8501/jndi/weblogic.management.mbeanservers.runtime
