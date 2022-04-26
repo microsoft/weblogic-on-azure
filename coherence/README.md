@@ -130,7 +130,7 @@ Ensure that the deployment action from Eclipse will target the WebLogic Cluster 
 ## Connect to the Coherence JMX Server using JConsole
 The Coherence Mbean server will be started on the oldest machine of the cluster, so we need to find it and connect to it. We can connect using JConsole. [JConsole](https://en.wikipedia.org/wiki/JConsole) is a GUI tool that can monitor remote JVMs, and it comes for free with the JDK.
 * Go to `<admin server DNS name>:7001/console`.
-* Sign in with username=`weblogic`, password=`Secret123456`.
+* Sign in with username `weblogic` and password that was specified in section [Create the WebLogic Cluster on Azure](#create-the-weblogic-cluster-on-azure).
 * Click `Diagonostics` in "Domain Structure" window, and go to `Log Files`.
 * Look for `ServerLog` of server `msp1`, select and click the `View` button.
 * Click `Customize this table` and change `Time Interval` to `All` and `Number of rows displayed per page` to `5000`, click `Apply`.
@@ -154,7 +154,7 @@ The Coherence Mbean server will be started on the oldest machine of the cluster,
 ```
 service:jmx:t3://<Oldest Machine IP>:8501/jndi/weblogic.management.mbeanservers.runtime
 ```
-* Fill in username=`weblogic`, password=`Secret123456`, click Connect. If a window pops up and says 'Secure connection failed. Retry insecurely?', click `Insecure connection`.
+* Fill in username as `weblogic`, password as what was specified in section [Create the WebLogic Cluster on Azure](#create-the-weblogic-cluster-on-azure), click Connect. If a window pops up and says 'Secure connection failed. Retry insecurely?', click `Insecure connection`.
 * After the connection is established, verify it by checking there is a green connection icon on the top right.
 
 ## Test the cache
