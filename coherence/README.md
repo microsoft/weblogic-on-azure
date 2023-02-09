@@ -7,7 +7,7 @@ This demo shows how you can deploy a Java application with Coherence to Azure in
 * Install [the 2020-03 release of Eclipse for Enterprise Java Developers](https://www.eclipse.org/downloads/packages/release/2020-03/r/eclipse-ide-enterprise-java-developers-includes-incubating-components) (this is the latest Eclipse IDE version that supports Java SE 8 and works reliably with WebLogic 12.2.1.3).
 * Install WebLogic 12.2.1.3 (note - not the latest version) using the Quick Installer by downloading it from [here](https://www.oracle.com/middleware/technologies/weblogic-server-downloads.html). You need this locally even if you are not running WebLogic locally because the Eclipse WebLogic deployment support needs it.
 * Download this repository somewhere in your file system (easiest way might be to download as a zip and extract).
-* You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free).
+* You will need an Azure subscription. If you don't have one, you can get one for free for one year [here](https://azure.microsoft.com/en-us/free). Ensure the Azure identity you use to sign in has either the [Owner](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#owner) role in the subscription or the [Contributor](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) and [User Access Administrator](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) roles in the subscription.
 
 ## Start Managed PostgreSQL on Azure
 We will be using the fully managed PostgreSQL offering in Azure for this demo. Please set it up now unless you have done so already. Below is how we set it up. 
@@ -33,16 +33,6 @@ We will be using the fully managed PostgreSQL offering in Azure for this demo. P
    * Toggle "Enforce SSL connection" to "DISABLED". 
    * Hit Save.
 
-## Create User-Assigned Managed Identity
-
-* Go to the [Azure portal](http://portal.azure.com).
-* Select 'Create a resource'. In the search box, enter and select 'User Assigned Managed Identity'. Click create.
-* The steps in this section use `<your suffix>`. The suffix could be your first name such as "reza".  It should be short and reasonably unique, and less than 10 charracters in length.
-* Create and specify a new resource group named weblogic-cafe-managed-identity-group-`<your suffix>`.
-* Specify the region to be a location close to you.
-* Specify the Instance name to be weblogic-cafe-managed-identity-`<your suffix>`. 
-* Click Review + create -> Create.
-
 ## Create the WebLogic Cluster on Azure
 The next step is to get a WebLogic cluster up and running. Follow the steps below to do so.
 
@@ -63,11 +53,8 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
 * In the "Azure Application Gateway" use these values
    * Toggle "Connect to Azure Application Gateway" to `Yes`.
    * Choose "Generate a self-signed certificate" for the "Select desired TLS/SSL certificate option".
-   * To auto-generate a self-signed certificate, you will need to add user-assigned managed identities(at least one), click "Add".
-   * In the window pops from right, choose weblogic-cafe-managed-identity-`<your suffix>`, then click "Add"
-   * Ensure the managed identity is selected.
 * Click Next.
-* In "DNS Configuration", leave "Configure Custom DNS Alias?" with `No` selected.
+* In "Networking", under "Configure virtual networks", for "Subnet for Application Gateway", select "(new) appgateway-subnet" .
 * Click Next.
 * In "Database" use these values
    * Toggle "Connect to DataBase" to `Yes`. 
@@ -86,7 +73,7 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the final screen, click Create.
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
-* Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
+* Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console/ successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
 * In the portal go to 'All resources'. Find and click on wls-nsg. In the Overview page, find `WebLogicManagedChannelPortsDenied` under the Inbound Security Rules, click on it. In the pop window, select `Allow` for Action and click `Save`, wait for the update to be completed. This will open portal 8501 which we will use later.
 
 ## Setting Up WebLogic in Eclipse
