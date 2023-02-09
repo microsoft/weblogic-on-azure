@@ -75,6 +75,8 @@ The next step is to get a WebLogic cluster up and running. Follow the steps belo
    * On the Summary blade you must see "Validation passed".  If you don't see this, you must troubleshoot and resolve the reason.  After you have done so, you can continue.
    * On the final screen, click Create.
 * It will take some time for the WebLogic cluster to properly deploy (could be up to an hour). Once the deployment completes, in the portal go to 'All resources'.
+* Locate your resource group weblogic-cafe-group-`<your suffix>`. View the list of resources in your resource group.
+* Enable public network to access the admin server. Find and click on wls-nsg. In the Overview page, find `WebLogicAdminPortsAllowed` under the Inbound Security Rules, click on it. In the pop window, select `Any` for Source and click Save, wait for the update to be completed.
 * Find and click on adminVM. Copy the DNS name for the admin server. You should be able to log onto http://`<admin server DNS name>`:7001/console/ successfully using the credentials above.  If you are not able to log in, you must troubleshoot and resolve the reason why before continuing.
 
 ## Setting Up WebLogic in Eclipse
